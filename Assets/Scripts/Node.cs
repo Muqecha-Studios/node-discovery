@@ -11,8 +11,6 @@ public class Node : ScriptableObject
 
     [SerializeField] private List<Node> nodes;
     [SerializeField] private List<string> relationshipDescriptions;
-
-
     
 
     public List<Node> GetConnectedNodes(ScriptableObject node)
@@ -30,11 +28,11 @@ public class Node : ScriptableObject
         return relationshipDescriptions;
     }
 
-    public bool CheckConnectedNodes()
+    public bool IsConnectedGraph()
     {
         foreach (var node in nodes)
         {
-            if (!node.CheckConnection(this))
+            if (!node.IsConnected(this))
             {
                 CreateConnection(node, this);
             }
@@ -44,7 +42,7 @@ public class Node : ScriptableObject
         return true;
     }
 
-    public bool CheckConnection(Node node)
+    public bool IsConnected(Node node)
     {
         foreach (var key in nodes)
         {
