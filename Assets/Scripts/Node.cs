@@ -49,7 +49,6 @@ public class Node : ScriptableObject
             if (key.nodeName == node.nodeName)
                 return true;
         }
-
         return false;
 
     }

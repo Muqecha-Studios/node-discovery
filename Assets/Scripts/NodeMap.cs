@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class NodeMap : MonoBehaviour
 {
-    public NodeMapDictionary nodemap;
+    public WorldSpaceNodeDictionary nodeMap;
+    
 }
 
 [Serializable]
-public class NodeMapDictionary : UnitySerializedDictionary<Node, List<Node>> { }
+public class WorldSpaceNodeDictionary : UnitySerializedDictionary<Transform, List<Transform>> { }
