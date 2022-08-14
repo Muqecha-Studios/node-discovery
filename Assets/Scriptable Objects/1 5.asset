@@ -10,15 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e1642ec6da9e4dd4a3f1ddb6d7d93cd, type: 3}
-  m_Name: Test 1
+  m_Name: 1 5
   m_EditorClassIdentifier: 
   nodeName: 
   description: 
-  nodes:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  connectedNodes:
+  - {fileID: 11400000, guid: 9ba3712968b384fea973b3ffbd279241, type: 2}
+  - {fileID: 11400000, guid: c8b8ff702ac9847e786a6712e61e40e0, type: 2}
+  relationshipDescriptions: []

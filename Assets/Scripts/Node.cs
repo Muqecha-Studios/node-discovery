@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "Node", menuName = "ScriptableObjects/Node", order = 1)]
 public class Node : ScriptableObject
@@ -9,28 +10,29 @@ public class Node : ScriptableObject
     public string nodeName;
     public string description;
 
-    [SerializeField] private List<Node> nodes;
+    [FormerlySerializedAs("nodes")] [SerializeField] private List<Node> connectedNodes;
     [SerializeField] private List<string> relationshipDescriptions;
     
 
-    public List<Node> GetConnectedNodes(ScriptableObject node)
+    public List<Node> GetConnectedNodes()
     {
-        return nodes;
+        return connectedNodes;
     }
 
     public void AddNode(Node node)
     {
-        nodes.Add(node);
+        connectedNodes.Add(node);
+        node.AddNode(this);
     }
     
-    public List<string> FetchRelationshipDescriptions(ScriptableObject node)
+    public List<string> FetchRelationshipDescriptions()
     {
         return relationshipDescriptions;
     }
 
-    public bool IsConnectedGraph()
+    public void IsConnectedGraph()
     {
-        foreach (var node in nodes)
+        foreach (var node in connectedNodes)
         {
             if (!node.IsConnected(this))
             {
@@ -38,13 +40,11 @@ public class Node : ScriptableObject
             }
 
         }
-        
-        return true;
     }
 
     public bool IsConnected(Node node)
     {
-        foreach (var key in nodes)
+        foreach (var key in connectedNodes)
         {
             if (key.nodeName == node.nodeName)
                 return true;
